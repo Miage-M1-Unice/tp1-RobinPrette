@@ -1,10 +1,17 @@
-package exo1.part1;
-
-import exo1.part1.independant.FilterOnlyJavaFile;
+package exo1.a.part2;
 
 import java.io.File;
+import java.io.FilenameFilter;
 
 public class FilterCurrentDir {
+
+    class FilterOnlyJavaFile implements FilenameFilter {
+        @Override
+        public boolean accept(File dir, String name) {
+            File file = new File(dir.getAbsolutePath() + "/" + name);
+            return name.endsWith(".java") || file.isDirectory();
+        }
+    }
 
     private void recursivePrint(File dir, int step) {
         File[] files = dir.listFiles(new FilterOnlyJavaFile());

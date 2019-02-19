@@ -1,4 +1,4 @@
-package exo1.part1.independant;
+package exo1.a.part1.independant;
 
 import java.io.File;
 import java.io.FilenameFilter;

@@ -1,20 +1,13 @@
-package exo1.part4;
+package exo1.a.part1;
+
+import exo1.a.part1.independant.FilterOnlyJavaFile;
 
 import java.io.File;
-import java.io.FilenameFilter;
 
 public class FilterCurrentDir {
 
     private void recursivePrint(File dir, int step) {
-        FilenameFilter filter = new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                File file = new File(dir.getAbsolutePath() + "/" + name);
-                return name.endsWith(".java") || file.isDirectory();
-            }
-        };
-
-        File[] files = dir.listFiles(filter);
+        File[] files = dir.listFiles(new FilterOnlyJavaFile());
 
         StringBuilder tabs = new StringBuilder();
 
@@ -38,7 +31,6 @@ public class FilterCurrentDir {
     public static void main(String[] args) {
         FilterCurrentDir filterCurrentDir = new FilterCurrentDir();
         File currentDir = new File(".");
-
         filterCurrentDir.printDir(currentDir);
     }
 
